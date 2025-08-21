@@ -6,7 +6,7 @@ interface SingleBoxCompProps {
 title: string;
 price: string;
 message: string;
-onpressProp: (checked: boolean) => void; // Optional prop for handling press events
+onpressProp: () => void;
 isSelected?: boolean; // Optional prop to indicate if the box is selected
 }
 
@@ -16,7 +16,7 @@ const SingleBoxComp = ({title, price, message, onpressProp, isSelected = false}:
     <View style={[styles.mainBox ,isSelected && styles.changeColorMainBox]}>
       <View style={styles.wrapper}>
         <View style={styles.wrapRadioPaynow}>
-         <SingleRadioBtn onPressProp = {onpressProp}/>
+         <SingleRadioBtn onPressProp = {onpressProp} isChecked={isSelected}/>
          <Text style={styles.titleStyle}>{title}</Text>
          </View>
          <Text style={styles.priceStyle}>${price}</Text>

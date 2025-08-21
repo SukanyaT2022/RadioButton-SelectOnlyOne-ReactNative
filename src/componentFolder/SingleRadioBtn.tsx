@@ -1,15 +1,11 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 interface SingleRadioBtnProps {
-  onPressProp: (checked: boolean) => void;
+  onPressProp: () => void;
+  isChecked: boolean;
 }
-const SingleRadioBtn = ({onPressProp}:SingleRadioBtnProps) => {
-  const [checked, setChecked] = React.useState(false);
-  const handleCheck = () => {
-    setChecked(!checked);
-    onPressProp(!checked);
-  }
-  return <TouchableOpacity onPress={handleCheck} style={[styles.radioBtn, checked ? styles.checkStyle: styles.onCheckStyle ]}></TouchableOpacity>;
+const SingleRadioBtn = ({onPressProp, isChecked}:SingleRadioBtnProps) => {
+  return <TouchableOpacity onPress={onPressProp} style={[styles.radioBtn, isChecked ? styles.checkStyle: styles.onCheckStyle ]}></TouchableOpacity>;
 };
 
 export default SingleRadioBtn;
