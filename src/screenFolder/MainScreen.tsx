@@ -5,14 +5,15 @@ import TotalComp from '../componentFolder/TotalComp';
 
 const MainScreen = () => {
   const [selectedBox, setSelectedBox] = React.useState<number>(-1);
+  const [selectedPrice, setSelectedPrice] = React.useState<number>(0);
   const dataArray = [
     {
       id: 1,
       title: 'Pay Now',
-      price: '557',
+      price: 550,
       message: 'Pay $380 and cancel free',
     },
-    { id: 2, title: 'Pay Later', price: '600', message: 'Pay $600 at hotel' },
+    { id: 2, title: 'Pay Later', price: 600, message: 'Pay $600 at hotel' },
     
  
   ];
@@ -22,15 +23,17 @@ const MainScreen = () => {
         <SingleBoxComp
           key={item.id}
           title={item.title}
-          price={item.price}
+          price={item.price.toString()}
           message={item.message}
           isSelected={selectedBox === index}
           onpressProp={() => {
+            // selectedBox === index ? -1 : index --- we toggle 
             setSelectedBox(selectedBox === index ? -1 : index);
+            setSelectedPrice(item.price);
           }}
         />
       ))}
-      <TotalComp />
+      <TotalComp price={selectedPrice} />
     </View>
   );
 };

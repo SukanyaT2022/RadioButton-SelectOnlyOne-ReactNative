@@ -2,14 +2,21 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 interface TotalCompProps {
-price: string; 
+price: number; 
+
 }
-const TotalComp = ({price}:TotalCompProps) => {
+const TotalComp = ({price, }:TotalCompProps) => {
+  const tax = (price * 12) / 100;
+  const totalAfterTax = price + tax;
   return (
     <View style = {styles.mainBox}>
-          <View style = {styles.wrapper}>
+      <View style = {styles.wrapper}>
       <Text style = {styles.titleStyle}>Total</Text> 
       <Text style = {styles.titleStyle}>${price}</Text> 
+      </View>
+      <View style = {styles.wrapper}>
+      <Text style = {styles.titleStyle}>Total /after tax 12%</Text> 
+      <Text style = {styles.titleStyle}>${totalAfterTax}</Text> 
       </View>
     </View>
   )
